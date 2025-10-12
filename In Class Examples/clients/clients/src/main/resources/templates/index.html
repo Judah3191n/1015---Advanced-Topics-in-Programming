@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title> Booking Co.</title>
+</head>
+<body>
+
+ 
+ <h1 th:text="${msg}">important message</h1>
+
+<ol  >
+  <li th:each="client: ${clientssData}" th:text=" ${client}">cars info</li>
+  
+  </ol>
+<p> confirming the clientlist</p>
+<table border="1">
+<tr>
+<th>Client Name</th> 
+<th>Client email</th> 
+<th>Client phone</th> 
+</tr>
+<tr th:each = "client : ${clientsData}">
+<td th:text = "${client.Name}">name </td>
+<td th:text = "${client.Email}">name </td>
+<td th:text = "${client.Phone}">name </td>
+</tr>
+</table>
+     <p th:text="'the clientlist as of' + ' '  + ${date}">date</p>
+</body>
+</html>

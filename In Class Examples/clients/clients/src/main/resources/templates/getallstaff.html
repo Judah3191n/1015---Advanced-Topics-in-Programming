@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All Staff</title>
+</head>
+<body>
+    <h1>All Staff Members</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Position</th>
+        </tr>
+        <tr th:each="staff : ${AllStaff}">
+            <td th:text="${staff.name}">Name</td>
+            <td th:text="${staff.position}">Position</td>
+        </tr>
+    </table>
+</body>
+</html>

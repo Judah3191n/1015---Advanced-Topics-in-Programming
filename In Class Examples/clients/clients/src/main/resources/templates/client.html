@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title> Clients - Booking Co.</title>
+</head>
+<body>
+
+ <center>
+<p> confirming the clientlist</p>
+
+<table border="1">
+<tr>
+<th>Client index</th> 
+    <th>Client Name</th> 
+<th>Client email</th> 
+<th>Client phone</th> 
+</tr>
+<tr th:each="client, status:${clientsData}">
+<td th:text="${status.index}">Client Name</td> 
+<td th:text="${client.Name}">Client Name</td> 
+<td th:text="${client.email}">Client email</td> 
+<td th:text="${client.phone}">Client phone</td> 
+</tr>   
+</table>
+<p th:text="'the clientlist as of' + ' '  + ${date}">date</p>
+</center> 
+</body>
+</html>
