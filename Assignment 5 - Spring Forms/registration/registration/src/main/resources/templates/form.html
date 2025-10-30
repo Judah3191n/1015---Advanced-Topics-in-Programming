@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Form</title>
+</head>
+<body>
+<h2>Registration Form</h2>
+<form th:action="@{/form}" th:object="${userForm}" method="post">
+
+    Name: <input type="text" th:field="*{name}"/> <br/>
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+
+    Email: <span style="color:red;">*</span> <input type="text" th:field="*{email}"/> <br/>
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+
+    Age: <input type="number" th:field="*{age}"/> <br/>
+    <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></p>
+
+    <button type="submit">Submit</button>
+</form>
+
+<p th:text="${message}"></p>
+</body>
+</html>
