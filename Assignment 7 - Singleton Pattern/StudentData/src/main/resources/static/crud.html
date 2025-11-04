@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student CRUD</title>
+<style>
+body { font-family: Arial; padding: 20px; }
+input, button { margin: 8px; padding: 6px; }
+#response { white-space: pre-wrap; margin-top: 10px; }
+</style>
+</head>
+<body>
+<h2>Student Form</h2>
+<input type="number" id="id" placeholder="ID (for update/delete)"><br>
+<input type="text" id="name" placeholder="Name" required><br>
+<input type="email" id="email" placeholder="Email" required><br>
+<button onclick="addStudent()">Add</button>
+<button onclick="updateStudent()">Update</button>
+<button onclick="deleteStudent()">Delete</button>
+<button onclick="getStudents()">Get All</button>
+<pre id="response"></pre>
+<script>
+const url = '/students';
+
+
+function addStudent() {
+fetch(url, {
+method: 'POST',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ name: name.value, email: email.value })
+})
+.then(res => res.text()).then(txt => response.innerText = txt);
+}
+
+
+function updateStudent() {
+fetch(`${url}/${id.value}`, {
+method: 'PUT',
+headers: { 'Content-Type': 'application/json' },
+body: JSON.stringify({ name: name.value, email: email.value })
+})
+.then(res => res.text()).then(txt => response.innerText = txt);
+}
+
+
+function deleteStudent() {
+fetch(`${url}/${id.value}`, { method: 'DELETE' })
+.then(res => res.text()).then(txt => response.innerText = txt);
+}
+
+
+function getStudents() {
+fetch(url)
+.then(res => res.json())
+.then(data => response.innerText = JSON.stringify(data, null, 2));
+}
+</script>
+</body>
+</html>
