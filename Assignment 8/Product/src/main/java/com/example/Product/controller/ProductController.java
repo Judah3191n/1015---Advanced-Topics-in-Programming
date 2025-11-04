@@ -28,23 +28,26 @@ public class ProductController {
 @Autowired
 private ProductRepository repo;
 
-
+//get all
 @GetMapping
 public List<Product> getAll() {
     return repo.findAll();
 }
 
+//get by id
 @GetMapping("/{id}")
 public Optional<Product> getOne(@PathVariable int id){
     return repo.findById(id);
 }
 
+//insert
 @PostMapping
 public ResponseEntity<String> add(@Valid @RequestBody Product product) {
     repo.save(product);
     return ResponseEntity.ok("Product added");
 }
 
+//update by id
 @PutMapping("/{id}")
 public ResponseEntity<String> update(@PathVariable int id, @Valid @RequestBody Product product) {
     if (!repo.existsById(id)) return ResponseEntity.notFound().build();
@@ -53,6 +56,7 @@ public ResponseEntity<String> update(@PathVariable int id, @Valid @RequestBody P
     return ResponseEntity.ok("Product updated");
 }
 
+//delete by id
 @DeleteMapping("/{id}")
 public ResponseEntity<String> delete(@PathVariable int id) {
     if (!repo.existsById(id)) return ResponseEntity.notFound().build();
