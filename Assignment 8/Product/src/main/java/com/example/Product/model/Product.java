@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
 @Entity
+@Table(name = "Products Por Moi")//table name
 public class Product {
 
     @Id
@@ -19,21 +20,9 @@ public class Product {
 
     private String category;
 
-    public Product() {
-    };
+    //Constuctor
+    public Product() {};
 
-    public Product(String name, float price, String category) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.category = category;
-    }
-
-    public Product(String name, float price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-    }
 
     //Getters and Setters
     public int getId() {
